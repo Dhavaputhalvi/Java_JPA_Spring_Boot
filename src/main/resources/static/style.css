@@ -1,0 +1,428 @@
+/* Stores the shared color and spacing choices used throughout the page. */
+:root { /* Starts the reusable design settings. */
+    color-scheme: light; /* Tells the browser this page uses a light appearance. */
+    --ink: #18332c; /* Stores the main dark green text color. */
+    --muted: #65746c; /* Stores the softer text color. */
+    --paper: #f3f6f1; /* Stores the page background color. */
+    --surface: #ffffff; /* Stores the form and table background color. */
+    --line: #dbe4dc; /* Stores the fine border color. */
+    --green: #24745d; /* Stores the main action color. */
+    --green-dark: #18533f; /* Stores the darker hover color. */
+    --coral: #d56b50; /* Stores a warm accent color. */
+    --gold: #e0bd68; /* Stores the small highlight color. */
+    --danger: #a83e32; /* Stores the delete action color. */
+    --shadow: 0 16px 38px rgb(26 53 43 / 7%); /* Stores a soft shadow for framed sections. */
+} /* Ends the reusable design settings. */
+
+* { /* Applies predictable sizing to every page element. */
+    box-sizing: border-box; /* Includes padding and borders inside each element's width. */
+} /* Ends the universal sizing rule. */
+
+body { /* Styles the overall page background and default text. */
+    min-width: 320px; /* Prevents the layout from collapsing on the narrowest common phones. */
+    margin: 0; /* Removes the browser's default outer page gap. */
+    color: var(--ink); /* Uses the shared dark text color. */
+    background-color: var(--paper); /* Uses the soft page background. */
+    background-image: linear-gradient(rgb(24 51 44 / 3%) 1px, transparent 1px), linear-gradient(90deg, rgb(24 51 44 / 3%) 1px, transparent 1px); /* Adds a quiet registry-paper grid. */
+    background-size: 28px 28px; /* Keeps the background grid small and consistent. */
+    font-family: "Trebuchet MS", Verdana, sans-serif; /* Uses a readable, friendly font available on most computers. */
+    font-size: 15px; /* Sets a comfortable default reading size. */
+    line-height: 1.5; /* Gives paragraphs and labels room to breathe. */
+} /* Ends the body styles. */
+
+button, input, select { /* Gives form controls the same font as the rest of the page. */
+    font: inherit; /* Prevents controls from using a mismatched browser font. */
+} /* Ends the shared form-control rule. */
+
+button { /* Makes buttons respond clearly to pointer users. */
+    cursor: pointer; /* Shows that a button can be clicked. */
+} /* Ends the button rule. */
+
+.app-shell { /* Sets the maximum page width and centers the contents. */
+    width: min(1120px, calc(100% - 40px)); /* Keeps generous margins while fitting smaller viewports. */
+    margin: 0 auto; /* Centers the application shell horizontally. */
+} /* Ends the application-shell rule. */
+
+.site-header { /* Styles the full-width brand bar. */
+    display: flex; /* Places the brand and office label on one row. */
+    min-height: 76px; /* Gives the brand bar a stable touch-friendly height. */
+    align-items: center; /* Vertically centers the bar contents. */
+    justify-content: space-between; /* Pushes the brand and label to opposite sides. */
+    border-bottom: 1px solid rgb(24 51 44 / 15%); /* Separates the brand bar from page content. */
+} /* Ends the brand-bar rule. */
+
+.brand { /* Arranges the brand mark and title. */
+    display: inline-flex; /* Keeps the mark and title on one aligned line. */
+    align-items: center; /* Vertically centers the mark with its name. */
+    gap: 11px; /* Adds space between the mark and the title. */
+    color: var(--ink); /* Keeps the brand text dark and readable. */
+    text-decoration: none; /* Removes the browser's default link underline. */
+} /* Ends the brand-link rule. */
+
+.brand-mark { /* Styles the small two-letter registry mark. */
+    display: grid; /* Makes it easy to center the letters inside the square. */
+    width: 38px; /* Gives the mark a fixed width. */
+    aspect-ratio: 1; /* Keeps the mark perfectly square. */
+    place-items: center; /* Centers the letters horizontally and vertically. */
+    border-radius: 9px; /* Softens the square corners slightly. */
+    color: #ffffff; /* Makes the letters stand out on the dark background. */
+    background: var(--ink); /* Uses the main ink color behind the letters. */
+    font-size: 12px; /* Keeps the mark compact. */
+    font-weight: 800; /* Makes the letters easy to see. */
+    letter-spacing: 0; /* Keeps letter spacing at the requested neutral value. */
+} /* Ends the brand-mark rule. */
+
+.brand-name { /* Styles the application name in the brand bar. */
+    font-family: Georgia, "Times New Roman", serif; /* Gives headings and brand text a distinct editorial character. */
+    font-size: 18px; /* Keeps the brand name prominent but compact. */
+    font-weight: 700; /* Makes the brand name stand out. */
+} /* Ends the brand-name rule. */
+
+.header-note, .eyebrow { /* Styles compact uppercase labels consistently. */
+    color: var(--green); /* Uses green to distinguish section labels from body text. */
+    font-size: 11px; /* Keeps these supporting labels small. */
+    font-weight: 800; /* Makes the uppercase labels easy to scan. */
+    letter-spacing: 0; /* Avoids widening the labels with extra letter spacing. */
+} /* Ends the compact-label rule. */
+
+.page-content { /* Creates the main vertical spacing and entrance motion. */
+    padding: 44px 0 52px; /* Separates the content from the header and footer. */
+    animation: page-enter 420ms ease-out both; /* Gives the screen a brief, gentle entrance. */
+} /* Ends the page-content rule. */
+
+@keyframes page-enter { /* Defines the first-load movement for the page content. */
+    from { opacity: 0; transform: translateY(8px); } /* Starts slightly lower and transparent. */
+    to { opacity: 1; transform: translateY(0); } /* Finishes in its normal position and opacity. */
+} /* Ends the entrance animation. */
+
+.page-intro { /* Places the page title beside its student count. */
+    display: flex; /* Creates a row for the title and count. */
+    align-items: end; /* Aligns the count with the lower edge of the title. */
+    justify-content: space-between; /* Pushes the count to the right. */
+    gap: 24px; /* Keeps the title and count apart when space is limited. */
+    margin-bottom: 25px; /* Adds space before the status and form. */
+} /* Ends the page-intro rule. */
+
+.eyebrow { /* Styles the small label above each heading. */
+    margin: 0 0 7px; /* Leaves a small gap below the label. */
+} /* Ends the eyebrow rule. */
+
+h1, h2, p { /* Removes browser-default heading and paragraph gaps before adding deliberate spacing. */
+    margin-top: 0; /* Removes the browser's default top margin. */
+} /* Ends the shared text margin rule. */
+
+h1, h2 { /* Gives headings a consistent serif display style. */
+    font-family: Georgia, "Times New Roman", serif; /* Adds a distinct, readable heading face. */
+    letter-spacing: 0; /* Keeps heading letter spacing neutral. */
+} /* Ends the heading-font rule. */
+
+h1 { /* Sets the page's main heading size. */
+    margin-bottom: 6px; /* Keeps the description close to the title. */
+    font-size: 36px; /* Makes the page title the strongest text element. */
+    line-height: 1.12; /* Keeps the title compact when it wraps. */
+} /* Ends the main-heading rule. */
+
+.intro-copy { /* Styles the short description below the main title. */
+    margin-bottom: 0; /* Removes extra space below the description. */
+    color: var(--muted); /* Uses the softer supporting-text color. */
+} /* Ends the intro-copy rule. */
+
+.record-count { /* Styles the student count as a compact summary. */
+    display: grid; /* Places the number above its label. */
+    min-width: 88px; /* Prevents the count area from shifting with different numbers. */
+    padding: 9px 14px; /* Gives the count a small amount of breathing room. */
+    border-left: 3px solid var(--coral); /* Adds a warm accent beside the count. */
+} /* Ends the count rule. */
+
+.count-number { /* Makes the total number easy to notice. */
+    font-family: Georgia, "Times New Roman", serif; /* Matches the display-heading style. */
+    font-size: 27px; /* Gives the count clear emphasis. */
+    font-weight: 700; /* Makes the number stand out. */
+    line-height: 1; /* Keeps the number and label close together. */
+} /* Ends the count-number rule. */
+
+.count-label { /* Styles the label below the total. */
+    color: var(--muted); /* Uses the supporting-text color. */
+    font-size: 12px; /* Keeps the label smaller than the number. */
+} /* Ends the count-label rule. */
+
+.status-message { /* Reserves a predictable place for success and error messages. */
+    min-height: 24px; /* Prevents the form from jumping when the message changes. */
+    margin: 0 0 12px; /* Separates the message from the form section. */
+    color: var(--green-dark); /* Uses a calm green for ordinary status messages. */
+    font-size: 13px; /* Keeps the status smaller than form labels. */
+} /* Ends the status-message rule. */
+
+.status-message[data-tone="error"] { /* Styles messages that explain a failed request. */
+    color: var(--danger); /* Uses a clear dark red for errors. */
+} /* Ends the error-message rule. */
+
+.form-section, .directory-section { /* Frames the form and the table as the two main work areas. */
+    border: 1px solid var(--line); /* Gives each work area a fine boundary. */
+    border-radius: 8px; /* Keeps the panels' corners restrained. */
+    background: var(--surface); /* Gives the work areas a clean white surface. */
+    box-shadow: var(--shadow); /* Lifts the work areas gently from the page grid. */
+} /* Ends the shared work-area rule. */
+
+.form-section { /* Adds internal spacing around the registration form. */
+    padding: 25px 28px 28px; /* Gives the form enough room without wasting space. */
+} /* Ends the form-section rule. */
+
+.section-heading { /* Aligns a section heading and its supporting note. */
+    display: flex; /* Places the heading and note on one row. */
+    align-items: end; /* Aligns both items at their lower edge. */
+    justify-content: space-between; /* Pushes the note to the right side. */
+    gap: 18px; /* Prevents the heading and note from touching. */
+    margin-bottom: 22px; /* Separates the heading from the form fields. */
+} /* Ends the section-heading rule. */
+
+h2 { /* Sets the section heading size. */
+    margin-bottom: 0; /* Removes space under each section title. */
+    font-size: 23px; /* Keeps section titles strong but smaller than the page title. */
+    line-height: 1.2; /* Keeps wrapped section headings compact. */
+} /* Ends the section-title rule. */
+
+.required-note, .table-caption { /* Styles secondary labels beside section titles. */
+    color: var(--muted); /* Keeps secondary labels less prominent than headings. */
+    font-size: 12px; /* Makes the supporting labels compact. */
+} /* Ends the secondary-label rule. */
+
+.form-grid { /* Arranges the form fields into two columns when space allows. */
+    display: grid; /* Enables a responsive field grid. */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Creates two equal columns without overflow. */
+    gap: 17px 20px; /* Adds consistent vertical and horizontal gaps. */
+} /* Ends the form-grid rule. */
+
+.field { /* Groups each label with its input control. */
+    display: grid; /* Places the label above the control. */
+    gap: 7px; /* Separates the label from its control. */
+    min-width: 0; /* Allows long content to shrink within its grid column. */
+} /* Ends the field rule. */
+
+.field-wide { /* Allows the phone field to span both desktop columns. */
+    grid-column: 1 / -1; /* Extends the phone input across the full form width. */
+} /* Ends the wide-field rule. */
+
+label { /* Makes input labels clear and consistent. */
+    color: var(--ink); /* Uses the main readable text color. */
+    font-size: 13px; /* Keeps labels compact but legible. */
+    font-weight: 700; /* Distinguishes labels from input text. */
+} /* Ends the label rule. */
+
+label span { /* Marks required fields with a warm accent. */
+    color: var(--coral); /* Makes the required marker easy to distinguish. */
+} /* Ends the required-marker rule. */
+
+input, select { /* Gives every form control a matching shape and surface. */
+    width: 100%; /* Makes the control fill its field column. */
+    min-height: 45px; /* Keeps controls easy to tap. */
+    padding: 10px 12px; /* Gives typed text room inside the control. */
+    border: 1px solid #cbd7ce; /* Defines the control edge without heavy contrast. */
+    border-radius: 5px; /* Softens the control corners slightly. */
+    outline: none; /* Lets the custom focus style replace the browser outline. */
+    color: var(--ink); /* Keeps entered text readable. */
+    background-color: #ffffff; /* Keeps controls bright against the section. */
+} /* Ends the input and select rule. */
+
+input::placeholder { /* Styles the example text shown before a user types. */
+    color: #93a198; /* Keeps examples visible but secondary. */
+} /* Ends the placeholder rule. */
+
+input:focus, select:focus, .table-frame:focus-visible { /* Gives keyboard and pointer users a clear focus indicator. */
+    border-color: var(--green); /* Highlights the focused control in green. */
+    box-shadow: 0 0 0 3px rgb(36 116 93 / 15%); /* Adds a visible focus ring without shifting layout. */
+} /* Ends the focus rule. */
+
+.form-actions { /* Places the form buttons together below the fields. */
+    display: flex; /* Keeps buttons on a shared row. */
+    flex-wrap: wrap; /* Lets the buttons wrap on a narrow screen. */
+    gap: 10px; /* Separates adjacent buttons. */
+    margin-top: 22px; /* Separates buttons from the last field. */
+} /* Ends the form-actions rule. */
+
+.button { /* Gives both form buttons a stable, comfortable shape. */
+    min-height: 43px; /* Keeps buttons easy to tap. */
+    padding: 9px 16px; /* Adds room around each button label. */
+    border: 1px solid transparent; /* Keeps both button types aligned. */
+    border-radius: 5px; /* Uses restrained button corners. */
+    font-size: 13px; /* Keeps button labels compact. */
+    font-weight: 700; /* Makes button labels easy to scan. */
+    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease; /* Adds a short, useful hover transition. */
+} /* Ends the shared button rule. */
+
+.button-primary { /* Styles the main registration action. */
+    color: #ffffff; /* Makes the primary label readable on green. */
+    background: var(--green); /* Makes the main action easy to identify. */
+} /* Ends the primary-button rule. */
+
+.button-primary:hover { /* Shows the primary action is interactive. */
+    background: var(--green-dark); /* Darkens the button on hover. */
+} /* Ends the primary hover rule. */
+
+.button-secondary { /* Styles the cancel action as a quieter alternative. */
+    border-color: var(--line); /* Gives the secondary action a visible outline. */
+    color: var(--ink); /* Keeps its label readable. */
+    background: #ffffff; /* Keeps the secondary action visually light. */
+} /* Ends the secondary-button rule. */
+
+.button-secondary:hover { /* Shows the cancel action is interactive. */
+    border-color: var(--green); /* Highlights the outline on hover. */
+    color: var(--green-dark); /* Highlights the text on hover. */
+} /* Ends the secondary hover rule. */
+
+.directory-section { /* Separates the saved-student table from the form. */
+    margin-top: 25px; /* Adds space between registration and records. */
+    padding: 24px 0 0; /* Adds space above the table heading. */
+    overflow: hidden; /* Keeps the table frame within the rounded section corners. */
+} /* Ends the directory-section rule. */
+
+.directory-heading { /* Adds horizontal breathing room to the table heading. */
+    padding: 0 28px; /* Aligns the heading with the form contents. */
+} /* Ends the directory-heading rule. */
+
+.table-frame { /* Lets wide table content scroll without widening the page. */
+    overflow-x: auto; /* Adds horizontal scrolling on narrow screens. */
+    border-top: 1px solid var(--line); /* Separates the table from its heading. */
+} /* Ends the table-frame rule. */
+
+table { /* Sets the table's minimum width and collapses adjoining borders. */
+    width: 100%; /* Uses the full width when the screen has room. */
+    min-width: 760px; /* Keeps columns readable and enables scrolling on phones. */
+    border-collapse: collapse; /* Joins cell borders into clean single lines. */
+    text-align: left; /* Aligns headings and values for quick scanning. */
+} /* Ends the table rule. */
+
+th, td { /* Defines consistent spacing for all table cells. */
+    padding: 13px 16px; /* Gives each value space from neighboring columns. */
+    border-bottom: 1px solid #e7ece8; /* Separates adjacent student rows. */
+    vertical-align: middle; /* Centers cell content vertically. */
+} /* Ends the cell-spacing rule. */
+
+th { /* Styles the table heading row. */
+    color: var(--muted); /* Keeps column names secondary to student values. */
+    background: #f8faf8; /* Distinguishes the heading row from student records. */
+    font-size: 11px; /* Makes column labels compact. */
+    font-weight: 800; /* Keeps column labels easy to scan. */
+    text-transform: uppercase; /* Uses a consistent compact heading style. */
+} /* Ends the table-heading rule. */
+
+td { /* Styles values in each student row. */
+    color: #34463d; /* Keeps record text dark but slightly softer than headings. */
+    font-size: 13px; /* Fits useful details in the table. */
+} /* Ends the table-value rule. */
+
+tbody tr:last-child td { /* Removes the extra divider below the final student. */
+    border-bottom: 0; /* Finishes the table cleanly. */
+} /* Ends the last-row rule. */
+
+.row-actions { /* Groups the edit and delete actions in each row. */
+    display: flex; /* Places the row actions side by side. */
+    gap: 7px; /* Separates the row action buttons. */
+} /* Ends the row-actions rule. */
+
+.row-button { /* Gives row actions a stable, compact size. */
+    min-height: 32px; /* Keeps each action easy to click. */
+    padding: 5px 9px; /* Adds enough space around the action label. */
+    border: 1px solid var(--line); /* Defines the action button shape. */
+    border-radius: 4px; /* Keeps compact buttons from looking pill-shaped. */
+    color: var(--ink); /* Keeps the action label readable. */
+    background: #ffffff; /* Keeps row controls distinct from the table. */
+    font-size: 12px; /* Keeps action buttons compact. */
+    font-weight: 700; /* Makes action labels clear. */
+} /* Ends the row-button rule. */
+
+.row-button:hover { /* Highlights row actions when the pointer is over them. */
+    border-color: var(--green); /* Highlights the action outline. */
+    color: var(--green-dark); /* Highlights the action label. */
+} /* Ends the row-button hover rule. */
+
+.row-button-delete:hover { /* Distinguishes the delete action on hover. */
+    border-color: var(--danger); /* Highlights the delete outline in red. */
+    color: var(--danger); /* Highlights the delete label in red. */
+} /* Ends the delete-hover rule. */
+
+.empty-state { /* Styles the message displayed when the register has no rows. */
+    margin: 0; /* Removes the browser's default paragraph margin. */
+    padding: 25px 28px; /* Aligns the empty message with the table heading. */
+    color: var(--muted); /* Keeps the message calm and secondary. */
+    font-size: 13px; /* Matches the table's supporting text size. */
+} /* Ends the empty-state rule. */
+
+.site-footer { /* Places a quiet footer below the work areas. */
+    display: flex; /* Places the footer labels on one line. */
+    justify-content: space-between; /* Separates the two footer labels. */
+    gap: 14px; /* Keeps labels apart when the screen is narrow. */
+    padding: 0 0 25px; /* Gives the page bottom a little breathing room. */
+    color: var(--muted); /* Keeps footer text secondary. */
+    font-size: 11px; /* Keeps the footer compact. */
+} /* Ends the footer rule. */
+
+[hidden] { /* Keeps hidden elements hidden even when another rule sets display. */
+    display: none !important; /* Ensures the browser honors the hidden attribute. */
+} /* Ends the hidden-element rule. */
+
+@media (max-width: 680px) { /* Adjusts the layout for phones and narrow tablets. */
+    .app-shell { /* Reduces side margins on smaller screens. */
+        width: min(100% - 24px, 1120px); /* Keeps content visible without crowding the edges. */
+    } /* Ends the narrow shell rule. */
+
+    .site-header { /* Makes the header slightly shorter on phones. */
+        min-height: 66px; /* Saves vertical space while keeping the brand easy to tap. */
+    } /* Ends the narrow header rule. */
+
+    .header-note { /* Hides the supporting header label on the narrowest layout. */
+        display: none; /* Prevents the header from feeling crowded. */
+    } /* Ends the narrow header-label rule. */
+
+    .page-content { /* Tightens the main page spacing on phones. */
+        padding: 30px 0 38px; /* Keeps the page comfortable without excess vertical space. */
+    } /* Ends the narrow content rule. */
+
+    .page-intro { /* Moves the count above the title when space is tight. */
+        align-items: start; /* Aligns the count with the top of the introduction. */
+        gap: 12px; /* Keeps the title and count from touching. */
+    } /* Ends the narrow intro rule. */
+
+    h1 { /* Scales the heading down for a narrow screen. */
+        font-size: 30px; /* Keeps the title readable without overflowing. */
+    } /* Ends the narrow main-heading rule. */
+
+    .record-count { /* Compacts the student summary on a phone. */
+        min-width: 70px; /* Keeps the summary narrow and stable. */
+        padding: 5px 9px; /* Reduces padding around the count. */
+    } /* Ends the narrow count rule. */
+
+    .form-section { /* Reduces form-panel spacing on a phone. */
+        padding: 21px 17px; /* Keeps controls away from the panel edges. */
+    } /* Ends the narrow form-section rule. */
+
+    .form-grid { /* Changes the form to one column on a phone. */
+        grid-template-columns: minmax(0, 1fr); /* Uses the full available width for each field. */
+        gap: 15px; /* Keeps a steady gap between fields. */
+    } /* Ends the narrow form-grid rule. */
+
+    .field-wide { /* Resets the phone field to the single-column layout. */
+        grid-column: auto; /* Places the field in the normal column. */
+    } /* Ends the narrow wide-field rule. */
+
+    .directory-heading { /* Aligns the table heading with the narrow panel. */
+        padding: 0 17px; /* Matches the form's inner spacing. */
+    } /* Ends the narrow directory-heading rule. */
+
+    .directory-section { /* Reduces table-panel top spacing on a phone. */
+        padding-top: 21px; /* Keeps the title close to the panel top. */
+    } /* Ends the narrow directory-section rule. */
+
+    .site-footer { /* Allows footer details to wrap when needed. */
+        flex-wrap: wrap; /* Prevents the footer labels from colliding. */
+    } /* Ends the narrow footer rule. */
+} /* Ends the narrow-screen rules. */
+
+@media (prefers-reduced-motion: reduce) { /* Respects people who request reduced motion. */
+    *, *::before, *::after { /* Selects every element and its generated content. */
+        scroll-behavior: auto !important; /* Prevents animated scrolling. */
+        animation-duration: 0.01ms !important; /* Removes the entrance movement. */
+        animation-iteration-count: 1 !important; /* Prevents repeated animation. */
+        transition-duration: 0.01ms !important; /* Removes button transition movement. */
+    } /* Ends the reduced-motion element rule. */
+} /* Ends the reduced-motion settings. */
